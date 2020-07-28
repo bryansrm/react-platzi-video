@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
 import '../assets/styles/App.scss';
 
-import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
-import Carusel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import Carousel from '../components/Carousel';
-import Footer from '../components/Footer';
 import useInitialState from '../hooks/useInitialState';
 
 const API = 'http://localhost:3000/initialState';
 
-const Home = () => {
+const Home = ({ myList, trends, originals }) => {
 
-    const initialState = useInitialState(API);
+    // const initialState = useInitialState(API);
 
     // const [ videos, setVideos ] = useState({ mylist: [], trends: [], originals: [] });
 
@@ -31,7 +30,7 @@ const Home = () => {
         <>
             <Search />
             
-            { initialState.mylist.length > 0 &&
+            { myList.length > 0 &&
                 <Categories title="Mas vistas">
                     <Carousel>
                         <CarouselItem />
@@ -41,13 +40,13 @@ const Home = () => {
             
             <Categories title="Tendencias">
                 <Carousel>
-                    { initialState.trends.map(item => <CarouselItem key={item.id} {...item} /> ) }
+                    { trends.map(item => <CarouselItem key={item.id} {...item} /> ) }
                 </Carousel>
             </Categories>
 
             <Categories title="Originales de Platzi">
                 <Carousel>
-                { initialState.originals.map(item => <CarouselItem key={item.id} {...item} /> ) }
+                { originals.map(item => <CarouselItem key={item.id} {...item} /> ) }
                 </Carousel>
             </Categories>
 
@@ -56,4 +55,13 @@ const Home = () => {
 
 };
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        myList: state.myList,
+        trends: state.trends,
+        originals: state.originals
+    };
+}
+
+// export default Home; // sin redux
+export default connect( mapStateToProps, null )(Home);
