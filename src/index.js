@@ -89,8 +89,8 @@ const initialState = {
             "description": "Vestibulum ac est lacinia nisi venenatis tristique",
             "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
         }
-        ],
-        "originals": [
+    ],
+    "originals": [
         {
             "id": 8,
             "slug": "tvshow-8",
