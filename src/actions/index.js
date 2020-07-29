@@ -1,6 +1,14 @@
+export const actions = {
+    setFavorite: 'SET_FAVORITE',
+    deleteFavorite: 'DELETE_FAVORITE'
+}
+
 export const setFavorite = ( payload ) => ({
-    type: 'SET_FAVORITE',
+    type: actions.setFavorite,
     payload
 });
 
-//export default setFavorite;
+export const deleteFavorite = ( payload ) => ({
+    type: actions.deleteFavorite,
+    payload
+});
