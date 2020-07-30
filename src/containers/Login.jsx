@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { loginRequest } from '../actions'
 import { Link } from 'react-router-dom'
 
 import '../assets/styles/containers/Login.scss'
@@ -6,7 +8,7 @@ import '../assets/styles/containers/Login.scss'
 import googleIcon from '../assets/static/google-icon.png'
 import twitterIcon from '../assets/static/twitter-icon.png'
 
-const Login = () => {
+const Login = ( props ) => {
 
     const [form, setForm] = useState({
         email: ''
@@ -21,7 +23,8 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(form);
+        props.loginRequest(form);
+        props.history.push('/');
     }
     
     return(
@@ -67,4 +70,9 @@ const Login = () => {
     )
 }
 
-export default Login;
+const mapDispatchToProps = {
+    loginRequest,
+}
+
+// export default Login;
+export default connect(null, mapDispatchToProps)(Login);
