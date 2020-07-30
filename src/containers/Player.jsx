@@ -1,13 +1,19 @@
 import React from 'react'
 
-const Player = () => {
+import '../assets/styles/containers/Player.scss'
+
+const Player = ( props ) => {
+
+    const { id } = props.match.params;
+    console.log(id);
+
     return (
         <div className="Player">
             <video controls autoPlay>
-                <source src="" type="" />
+                <source src="" type="video/mp4" />
             </video>
             <div className="Player-back">
-                <button type="button">
+                <button type="button" onClick={() => props.history.goBack()}>
                     Regresar
                 </button>
             </div>
