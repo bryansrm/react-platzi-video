@@ -21,11 +21,12 @@
   .header__menu ul {
     display: none;
     list-style: none;
-    margin: 0px 0px 0px -14px;
+    margin: 0px 0px 0px 0px;
     padding: 0px;
     position: absolute;
-    width: 100px;
+    width: 200px;
     text-align: right;
+    right: 30px;
   }
   
   .header__menu:hover ul, ul:hover {
