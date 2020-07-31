@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 
 import '../assets/styles/App.scss';
 
+import useInitialState from '../hooks/useInitialState';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import CarouselItem from '../components/CarouselItem';
 import Carousel from '../components/Carousel';
-import useInitialState from '../hooks/useInitialState';
+import Header from '../components/Header';
 
 const API = 'http://localhost:3000/initialState';
 
@@ -28,6 +29,7 @@ const Home = ({ myList, trends, originals }) => {
 
     return (
         <>
+            <Header />
             <Search />
             
             { myList.length > 0 &&
